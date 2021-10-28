@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+<meta name="keywords"
+	content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
+<meta name="author" content="pixelstrap">
+<link rel="icon" href="/dashboard/images/dashboard/favicon.png"
+	type="image/x-icon">
+<link rel="shortcut icon" href="/dashboard/images/dashboard/favicon.png"
+	type="image/x-icon">
+<title>Multikart - Premium Admin Template</title>
+
+<!-- Google font-->
+<link
+	href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Font Awesome-->
+<link rel="stylesheet" type="text/css"
+	href="/dashboard/css/fontawesome.css">
+
+<!-- Flag icon-->
+<link rel="stylesheet" type="text/css"
+	href="/dashboard/css/flag-icon.css">
+
+<!-- Bootstrap css-->
+<link rel="stylesheet" type="text/css"
+	href="/dashboard/css/bootstrap.css">
+
+<!-- App css-->
+<link rel="stylesheet" type="text/css" href="/dashboard/css/admin.css">
+</head>
+<body>
+
+	<!-- page-wrapper Start-->
+	<div class="page-wrapper">
+
+		<div th:replace="dashboard/header :: admin_header"></div>
+
+		<!-- Page Body Start-->
+		<div class="page-body-wrapper">
+
+			<div th:replace="dashboard/SideBar :: admin_side-bar"></div>
+
+
+
+
+			<div class="page-body">
+
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="page-header">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="page-header-left">
+									<h3>
+										Create User <small>Multikart Admin panel</small>
+									</h3>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<ol class="breadcrumb pull-right">
+									<li class="breadcrumb-item"><a href="index.html"><i
+											data-feather="home"></i></a></li>
+									<li class="breadcrumb-item">Users</li>
+									<li class="breadcrumb-item active">Create User</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Container-fluid Ends-->
+
+				<!-- Container-fluid starts-->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card tab2-card">
+								<div class="card-header">
+									<h5>Add User</h5>
+								</div>
+								<div class="card-body">
+									<ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
+										<li class="nav-item"><a class="nav-link active show"
+											id="account-tab" data-toggle="tab" href="#account" role="tab"
+											aria-controls="account" aria-selected="true"
+											data-original-title="" title="">Account</a></li>
+									</ul>
+									<div class="tab-content" id="myTabContent">
+										<div class="tab-pane fade active show" id="account"
+											role="tabpanel" aria-labelledby="account-tab">
+											<form method="post" class="needs-validation user-add"
+												th:action="@{/save-product}" th:object="${product}"
+												novalidate="">
+												<h4>Account Details</h4>
+												<div class="form-group row">
+													<label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Product
+														Name </label> <input th:field="*{name}"
+														class="form-control col-xl-8 col-md-7"
+														id="validationCustom1" type="text" required="">
+												</div>
+												<div class="form-group row">
+													<label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>Descrption</label>
+													<textarea th:field="*{description}"
+														class="form-control col-xl-8 col-md-7"
+														id="validationCustom2"></textarea>
+												</div>
+												<div class="form-group row">
+													<label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>Status</label>
+													<input th:field="*{status}"
+														class="form-control col-xl-8 col-md-7"
+														id="validationCustom3" type="checkbox">
+												</div>
+												
+												<div class="form-group row">
+													<label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>Feautred</label>
+													<input th:field="*{feautred}"
+														class="form-control col-xl-8 col-md-7"
+														id="validationCustom4" type="checkbox">
+												</div>
+												<div class="form-group row">
+													<label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>Category</label>
+
+													<select class="form-select" th:field="*{category}" >
+													
+														<th:block th:each="categ : ${categories}">
+                                                <optgroup label="Select" >
+                                                   <option value="" selected>Select an option</option>
+                                                </optgroup>
+															<optgroup th:label="${categ.name}">
+															
+																<th:block th:each="ctg : ${categ.categories}">
+																	<option th:value="${ctg.id}" th:text="${ctg.name}"></option>
+																</th:block>
+															</optgroup>
+
+														</th:block>
+													</select>
+												</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												<div class="pull-right">
+													<input type="submit" class="btn btn-primary" value="save" />
+												</div>
+											</form>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Container-fluid Ends-->
+
+			</div>
+
+			<!-- footer start-->
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 footer-copyright">
+							<p class="mb-0">Copyright 2019 © Multikart All rights
+								reserved.</p>
+						</div>
+						<div class="col-md-6">
+							<p class="pull-right mb-0">
+								Hand crafted & made with<i class="fa fa-heart"></i>
+							</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- footer end-->
+
+		</div>
+
+	</div>
+
+	<!-- latest jquery-->
+	<script src="/dashboard/js/jquery-3.3.1.min.js"></script>
+
+	<!-- Bootstrap js-->
+	<script src="/dashboard/js/popper.min.js"></script>
+	<script src="/dashboard/js/bootstrap.js"></script>
+
+	<!-- feather icon js-->
+	<script src="/dashboard/js/icons/feather-icon/feather.min.js"></script>
+	<script src="/dashboard/js/icons/feather-icon/feather-icon.js"></script>
+
+	<!-- Sidebar jquery-->
+	<script src="/dashboard/js/sidebar-menu.js"></script>
+
+	<!--Customizer admin-->
+	<script src="/dashboard/js/admin-customizer.js"></script>
+
+	<!-- lazyload js-->
+	<script src="/dashboard/js/lazysizes.min.js"></script>
+
+	<!--right sidebar js-->
+	<script src="/dashboard/js/chat-menu.js"></script>
+
+	<!--form validation js-->
+	<script src="/dashboard/js/dashboard/form-validation-custom.js"></script>
+
+	<!--script admin-->
+	<script src="/dashboard/js/admin-script.js"></script>
+
+</body>
+</html>

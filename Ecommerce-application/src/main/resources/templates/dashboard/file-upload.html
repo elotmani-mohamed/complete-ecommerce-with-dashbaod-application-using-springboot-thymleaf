@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form th:action="@{/save-users}" th:object="${users}" method="post"
+			enctype="multipart/form-data">
+
+			<input th:field="*{name}" type="text" placeholder="name" /> </br> <input
+				th:field="*{email}" type="text" placeholder="email" /> </br> <input
+				th:field="*{files}"  multiple="multiple" type="file" placeholder="upload file" /> </br> <input
+				type="submit" value="save"> </br>
+		</form>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<th>name</th>
+				<th>email</th>
+			</tr>
+			<tr th:each="user : ${allUsers}">
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.email}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
